@@ -56,7 +56,3 @@ An embedded ATM simulation system that authenticates users using a keypad PIN. T
 - SD Card transaction logging
 - Mobile application (ESP32)
 - Online banking simulation
-
-
-## Author
-**Rabab Almadi**
