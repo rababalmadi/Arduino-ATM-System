@@ -269,6 +269,22 @@ void handleMenu(char key)
     {
         depositMenu();
     }
+   else if(key == '*')
+    {
+        loggedin = false;
+
+        myServo.write(0);
+
+        lcd.clear();
+        lcd.setCursor(0,0);
+        lcd.print("Logged Out");
+
+        delay(1500);
+
+        lcd.clear();
+        lcd.setCursor(0,0);
+        lcd.print("Enter PIN:");
+    }
 }
 
 // ======================================================
@@ -294,7 +310,7 @@ void checkBalance()
 
     // Return to main menu and lock the door
     showMenu();
-    myServo.write(0);
+  
 }
 
 // ======================================================
@@ -327,17 +343,14 @@ void withdrawMoney()
 
             // Delete last digit
             else if(key == '*')
-            {
-                if(amountInput.length() > 0)
-                {
-                    amountInput.remove(amountInput.length() - 1, 1);
+            {if (amountInput.length() > 0)
+{
+    amountInput.remove(amountInput.length() - 1, 1);
 
-                    lcd.setCursor(0,1);
-                    lcd.print("                ");
-
-                    lcd.setCursor(0,1);
-                    lcd.print(amountInput);
-                }
+    lcd.setCursor(amountInput.length(), 1);
+    lcd.print(" ");
+    lcd.setCursor(amountInput.length(), 1);
+}
             }
 
             // Confirm entered amount
@@ -382,7 +395,7 @@ void withdrawMoney()
 
     // Return to menu and lock the door
     showMenu();
-    myServo.write(0);
+    
 }
 
 // ======================================================
@@ -446,18 +459,17 @@ void depositMoney()
 
             // Delete last digit
             else if(key == '*')
-            {
-                if(amountInput.length() > 0)
-                {
-                    amountInput.remove(amountInput.length() - 1, 1);
+{
+    if(amountInput.length() > 0)
+    {
+        amountInput.remove(amountInput.length() - 1, 1);
 
-                    lcd.setCursor(0,1);
-                    lcd.print("                ");
+        lcd.setCursor(amountInput.length(), 1);
+        lcd.print(" ");
 
-                    lcd.setCursor(0,1);
-                    lcd.print(amountInput);
-                }
-            }
+        lcd.setCursor(amountInput.length(), 1);
+    }
+}
 
             // Confirm entered amount
             else if(key == '#')
@@ -486,7 +498,7 @@ void depositMoney()
 
     // Return to menu and lock the door
     showMenu();
-    myServo.write(0);
+   
 }
 // ======================================================
 // Display Main Menu
